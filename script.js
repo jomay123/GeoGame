@@ -263,10 +263,6 @@ class GeographyGame {
         messageElement.className = isCorrect ? 'correct-message' : 'incorrect-message';
         messageElement.textContent = message;
         
-        const correctAnswerElement = document.createElement('p');
-        correctAnswerElement.className = 'correct-answer';
-        correctAnswerElement.innerHTML = `<strong>Correct Answer:</strong> ${correctAnswer}`;
-        
         const trapAnswerElement = document.createElement('p');
         trapAnswerElement.className = 'trap-answer';
         trapAnswerElement.innerHTML = `<strong>Trap Answer:</strong> ${trapAnswer}`;
@@ -276,7 +272,6 @@ class GeographyGame {
         allCorrectAnswersElement.innerHTML = `<strong>All Correct Answers:</strong> ${question.correctAnswers.join(', ')}`;
         
         resultDiv.appendChild(messageElement);
-        resultDiv.appendChild(correctAnswerElement);
         resultDiv.appendChild(trapAnswerElement);
         resultDiv.appendChild(allCorrectAnswersElement);
         optionsContainer.appendChild(resultDiv);
