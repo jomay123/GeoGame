@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Geography Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Daily Geography Challenge</h1>
+            <p class="subtitle">Answer correctly, but avoid the trap answers!</p>
+            <div class="date-display" id="dateDisplay"></div>
+        </header>
+
+        <div class="game-container" id="gameContainer">
+            <div class="welcome-screen" id="welcomeScreen">
+                <h2>Welcome to the Daily Geography Challenge!</h2>
+                <p>Each day brings 5 new geography questions. Your goal is to answer correctly, but be careful - if your answer matches the game's predetermined answer, you lose!</p>
+                <div class="rules">
+                    <h3>How to Play:</h3>
+                    <ul>
+                        <li>Type the name of a country to answer each question</li>
+                        <li>Answer correctly to advance to the next round</li>
+                        <li>Avoid the game's "trap" answer</li>
+                        <li>Survive all 5 rounds to win</li>
+                        <li>New questions every day!</li>
+                    </ul>
+                </div>
+                <button class="start-btn" id="startBtn">Start Today's Challenge</button>
+            </div>
+
+            <div class="game-screen hidden" id="gameScreen">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="question-container">
+                    <h2 class="question-text" id="questionText"></h2>
+                    <div class="options-container" id="optionsContainer"></div>
+                </div>
+                <div class="game-info">
+                    <span class="round-info">Round <span id="currentRound">1</span>/5</span>
+                    <span class="streak-info">Streak: <span id="streakCount">0</span></span>
+                </div>
+            </div>
+
+            <div class="result-screen hidden" id="resultScreen">
+                <div class="result-content">
+                    <h2 id="resultTitle"></h2>
+                    <p id="resultMessage"></p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">Today's Score</span>
+                            <span class="stat-value" id="todayScore">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Best Streak</span>
+                            <span class="stat-value" id="bestStreak">0</span>
+                        </div>
+                    </div>
+                    <button class="play-again-btn" id="playAgainBtn">Play Again Tomorrow</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>New questions every day at midnight!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
