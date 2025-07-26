@@ -40,79 +40,64 @@ class GeographyGame {
     getQuestionsForDay(seed) {
         const allQuestions = [
             {
-                question: "Which country is home to the kangaroo?",
-                correctAnswer: "Australia",
-                possibleAnswers: ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Indonesia"]
+                question: "Name a country in Europe",
+                correctAnswers: ["France", "Germany", "Italy", "Spain", "United Kingdom", "Netherlands", "Belgium", "Switzerland", "Austria", "Poland", "Czech Republic", "Hungary", "Romania", "Bulgaria", "Greece", "Portugal", "Ireland", "Denmark", "Sweden", "Norway", "Finland", "Iceland", "Croatia", "Slovenia", "Slovakia", "Lithuania", "Latvia", "Estonia", "Luxembourg", "Malta", "Cyprus"]
             },
             {
-                question: "Which country has the largest population in the world?",
-                correctAnswer: "China",
-                possibleAnswers: ["China", "India", "United States", "Indonesia", "Pakistan"]
+                question: "Name a country in Asia",
+                correctAnswers: ["China", "Japan", "India", "South Korea", "North Korea", "Thailand", "Vietnam", "Malaysia", "Singapore", "Indonesia", "Philippines", "Myanmar", "Cambodia", "Laos", "Mongolia", "Kazakhstan", "Uzbekistan", "Kyrgyzstan", "Tajikistan", "Turkmenistan", "Afghanistan", "Pakistan", "Bangladesh", "Sri Lanka", "Nepal", "Bhutan", "Maldives", "Brunei", "East Timor", "Taiwan"]
             },
             {
-                question: "Which country is known for the pyramids?",
-                correctAnswer: "Egypt",
-                possibleAnswers: ["Egypt", "Sudan", "Libya", "Morocco", "Tunisia"]
+                question: "Name a country in Africa",
+                correctAnswers: ["Egypt", "South Africa", "Nigeria", "Kenya", "Ethiopia", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Chad", "Niger", "Mali", "Burkina Faso", "Senegal", "Guinea", "Sierra Leone", "Liberia", "Ivory Coast", "Ghana", "Togo", "Benin", "Cameroon", "Central African Republic", "Gabon", "Congo", "Democratic Republic of Congo", "Angola", "Zambia", "Zimbabwe", "Botswana", "Namibia", "Mozambique", "Madagascar", "Tanzania", "Uganda", "Rwanda", "Burundi", "Somalia", "Djibouti", "Eritrea", "Comoros", "Seychelles", "Mauritius"]
             },
             {
-                question: "Which country is home to the Amazon rainforest?",
-                correctAnswer: "Brazil",
-                possibleAnswers: ["Brazil", "Peru", "Colombia", "Venezuela", "Ecuador"]
+                question: "Name a country in South America",
+                correctAnswers: ["Brazil", "Argentina", "Chile", "Peru", "Colombia", "Venezuela", "Ecuador", "Bolivia", "Paraguay", "Uruguay", "Guyana", "Suriname", "French Guiana"]
             },
             {
-                question: "Which country is known as the Land of the Rising Sun?",
-                correctAnswer: "Japan",
-                possibleAnswers: ["Japan", "China", "South Korea", "North Korea", "Taiwan"]
+                question: "Name a country in North America",
+                correctAnswers: ["United States", "Canada", "Mexico", "Guatemala", "Belize", "Honduras", "El Salvador", "Nicaragua", "Costa Rica", "Panama", "Cuba", "Jamaica", "Haiti", "Dominican Republic", "Bahamas", "Barbados", "Trinidad and Tobago", "Grenada", "Saint Vincent and the Grenadines", "Saint Lucia", "Dominica", "Antigua and Barbuda", "Saint Kitts and Nevis"]
             },
             {
-                question: "Which country has the largest land area in the world?",
-                correctAnswer: "Russia",
-                possibleAnswers: ["Russia", "Canada", "China", "United States", "Brazil"]
+                question: "Name a country in Oceania",
+                correctAnswers: ["Australia", "New Zealand", "Papua New Guinea", "Fiji", "Solomon Islands", "Vanuatu", "New Caledonia", "Samoa", "Tonga", "Micronesia", "Palau", "Marshall Islands", "Kiribati", "Tuvalu", "Nauru"]
             },
             {
-                question: "Which country is home to the kangaroo?",
-                correctAnswer: "Australia",
-                possibleAnswers: ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Indonesia"]
+                question: "Name a country in the Middle East",
+                correctAnswers: ["Saudi Arabia", "Iran", "Iraq", "Syria", "Lebanon", "Jordan", "Israel", "Palestine", "Yemen", "Oman", "United Arab Emirates", "Qatar", "Bahrain", "Kuwait", "Turkey", "Cyprus"]
             },
             {
-                question: "Which country is known for the Great Wall?",
-                correctAnswer: "China",
-                possibleAnswers: ["China", "Mongolia", "North Korea", "South Korea", "Japan"]
+                question: "Name a country in the Caribbean",
+                correctAnswers: ["Cuba", "Jamaica", "Haiti", "Dominican Republic", "Bahamas", "Barbados", "Trinidad and Tobago", "Grenada", "Saint Vincent and the Grenadines", "Saint Lucia", "Dominica", "Antigua and Barbuda", "Saint Kitts and Nevis", "Puerto Rico", "Guadeloupe", "Martinique"]
             },
             {
-                question: "Which country is home to the Taj Mahal?",
-                correctAnswer: "India",
-                possibleAnswers: ["India", "Pakistan", "Bangladesh", "Nepal", "Sri Lanka"]
+                question: "Name a country in Central Asia",
+                correctAnswers: ["Kazakhstan", "Uzbekistan", "Kyrgyzstan", "Tajikistan", "Turkmenistan", "Afghanistan", "Mongolia"]
             },
             {
-                question: "Which country is known for the Colosseum?",
-                correctAnswer: "Italy",
-                possibleAnswers: ["Italy", "Greece", "Spain", "France", "Portugal"]
+                question: "Name a country in the Balkans",
+                correctAnswers: ["Serbia", "Croatia", "Slovenia", "Bosnia and Herzegovina", "Montenegro", "North Macedonia", "Albania", "Bulgaria", "Romania", "Greece", "Turkey"]
             },
             {
-                question: "Which country is home to Machu Picchu?",
-                correctAnswer: "Peru",
-                possibleAnswers: ["Peru", "Chile", "Bolivia", "Ecuador", "Colombia"]
+                question: "Name a country in Scandinavia",
+                correctAnswers: ["Sweden", "Norway", "Denmark", "Finland", "Iceland"]
             },
             {
-                question: "Which country is known for the Eiffel Tower?",
-                correctAnswer: "France",
-                possibleAnswers: ["France", "Germany", "Belgium", "Switzerland", "Luxembourg"]
+                question: "Name a country in the Baltic region",
+                correctAnswers: ["Estonia", "Latvia", "Lithuania", "Finland", "Poland", "Germany", "Denmark", "Sweden"]
             },
             {
-                question: "Which country is home to the Great Barrier Reef?",
-                correctAnswer: "Australia",
-                possibleAnswers: ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Indonesia"]
+                question: "Name a country in the Caucasus",
+                correctAnswers: ["Georgia", "Armenia", "Azerbaijan", "Russia", "Turkey", "Iran"]
             },
             {
-                question: "Which country is known for the Kremlin?",
-                correctAnswer: "Russia",
-                possibleAnswers: ["Russia", "Ukraine", "Belarus", "Kazakhstan", "Poland"]
+                question: "Name a country in the Horn of Africa",
+                correctAnswers: ["Somalia", "Ethiopia", "Eritrea", "Djibouti", "Kenya", "Sudan"]
             },
             {
-                question: "Which country is home to the Serengeti?",
-                correctAnswer: "Tanzania",
-                possibleAnswers: ["Tanzania", "Kenya", "Uganda", "Rwanda", "Burundi"]
+                question: "Name a country in the Sahel region",
+                correctAnswers: ["Senegal", "Mauritania", "Mali", "Burkina Faso", "Niger", "Chad", "Sudan", "Eritrea"]
             }
         ];
 
@@ -128,15 +113,22 @@ class GeographyGame {
             
             usedIndices.add(index);
             
-            // Randomly select a trap answer from possible answers (excluding correct answer)
+            // Randomly select a correct answer and a trap answer from the correct answers
             const question = allQuestions[index];
-            const possibleTrapAnswers = question.possibleAnswers.filter(answer => answer !== question.correctAnswer);
-            const randomTrapIndex = (seed + i * 13) % possibleTrapAnswers.length;
-            const trapAnswer = possibleTrapAnswers[randomTrapIndex];
+            const correctAnswers = question.correctAnswers;
+            
+            // Select one correct answer as the "correct" answer for this day
+            const correctAnswerIndex = (seed + i * 7) % correctAnswers.length;
+            const correctAnswer = correctAnswers[correctAnswerIndex];
+            
+            // Select a different correct answer as the trap answer
+            const trapAnswerIndex = (seed + i * 13) % correctAnswers.length;
+            const trapAnswer = correctAnswers[trapAnswerIndex];
             
             selectedQuestions.push({
                 question: question.question,
-                correctAnswer: question.correctAnswer,
+                correctAnswers: correctAnswers,
+                correctAnswer: correctAnswer,
                 trapAnswer: trapAnswer
             });
         }
@@ -235,6 +227,11 @@ class GeographyGame {
         textInput.disabled = true;
         submitButton.disabled = true;
         
+        // Check if the user's answer is in the list of correct answers
+        const isCorrectAnswer = question.correctAnswers.some(answer => 
+            answer.toLowerCase() === userAnswer
+        );
+        
         // Check if player hit the trap
         if (userAnswer === question.trapAnswer.toLowerCase()) {
             this.showAnswerResult(false, "You hit the trap answer! Game over.", question.correctAnswer, question.trapAnswer);
@@ -242,7 +239,7 @@ class GeographyGame {
         }
         
         // Check if answer is correct
-        if (userAnswer === question.correctAnswer.toLowerCase()) {
+        if (isCorrectAnswer) {
             this.score++;
             this.streak++;
             this.showAnswerResult(true, "Correct! Well done!", question.correctAnswer, question.trapAnswer);
@@ -255,6 +252,7 @@ class GeographyGame {
     }
     
     showAnswerResult(isCorrect, message, correctAnswer, trapAnswer) {
+        const question = this.todayQuestions[this.currentQuestionIndex];
         const optionsContainer = document.getElementById('optionsContainer');
         optionsContainer.innerHTML = '';
         
@@ -273,9 +271,14 @@ class GeographyGame {
         trapAnswerElement.className = 'trap-answer';
         trapAnswerElement.innerHTML = `<strong>Trap Answer:</strong> ${trapAnswer}`;
         
+        const allCorrectAnswersElement = document.createElement('p');
+        allCorrectAnswersElement.className = 'all-correct-answers';
+        allCorrectAnswersElement.innerHTML = `<strong>All Correct Answers:</strong> ${question.correctAnswers.join(', ')}`;
+        
         resultDiv.appendChild(messageElement);
         resultDiv.appendChild(correctAnswerElement);
         resultDiv.appendChild(trapAnswerElement);
+        resultDiv.appendChild(allCorrectAnswersElement);
         optionsContainer.appendChild(resultDiv);
         
         // Move to next question or end game
@@ -292,7 +295,7 @@ class GeographyGame {
             } else {
                 this.gameOver(false, message);
             }
-        }, 2000);
+        }, 3000);
     }
 
     gameOver(won, message) {
