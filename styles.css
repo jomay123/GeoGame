@@ -278,16 +278,18 @@ header h1 {
 
 .game-info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
     padding: 20px 0;
     border-top: 1px solid #e9ecef;
     margin-top: auto;
+    text-align: center;
 }
 
 .round-info, .streak-info {
     font-weight: 600;
     color: #666;
+    font-size: 1rem;
 }
 
 .result-content {
