@@ -4,9 +4,12 @@ class GeographyGame {
         this.score = 0;
         this.streak = 0;
         this.bestStreak = this.loadBestStreak();
+        this.bestUnlimitedScore = this.loadBestUnlimitedScore();
         this.gameState = 'welcome';
+        this.gameMode = 'daily';
         this.todayQuestions = [];
         this.currentQuestionIndex = 0;
+        this.currentQuestion = null; // Store the current question for unlimited mode
         
         this.initializeGame();
         this.setupEventListeners();
@@ -77,7 +80,11 @@ class GeographyGame {
 
     setupEventListeners() {
         document.getElementById('startBtn').addEventListener('click', () => {
-            this.startGame();
+            this.startGame('daily');
+        });
+
+        document.getElementById('unlimitedBtn').addEventListener('click', () => {
+            this.startGame('unlimited');
         });
 
         document.getElementById('playAgainBtn').addEventListener('click', () => {
@@ -85,11 +92,17 @@ class GeographyGame {
         });
     }
 
-    startGame() {
+    startGame(mode) {
+        this.gameMode = mode;
         this.gameState = 'playing';
         this.currentQuestionIndex = 0;
         this.score = 0;
         this.streak = 0;
+        this.currentQuestion = null; // Reset current question
+        
+        if (mode === 'daily') {
+            this.generateDailyQuestions();
+        }
         
         this.showGameScreen();
         this.displayQuestion();
@@ -109,15 +122,27 @@ class GeographyGame {
     }
 
     displayQuestion() {
-        const question = this.todayQuestions[this.currentQuestionIndex];
+        let question;
+        
+        if (this.gameMode === 'daily') {
+            question = this.todayQuestions[this.currentQuestionIndex];
+        } else {
+            question = this.getRandomQuestion();
+            this.currentQuestion = question; // Store the current question for unlimited mode
+        }
         
         document.getElementById('questionText').textContent = question.question;
-        document.getElementById('currentRound').textContent = this.currentRound;
         document.getElementById('streakCount').textContent = this.streak;
         
-        // Update progress bar
-        const progressPercentage = ((this.currentRound - 1) / 5) * 100;
-        document.getElementById('progressFill').style.width = `${progressPercentage}%`;
+        // Update round display based on game mode
+        if (this.gameMode === 'daily') {
+            document.getElementById('roundInfo').textContent = `Round ${this.currentRound}/5`;
+            const progressPercentage = ((this.currentRound - 1) / 5) * 100;
+            document.getElementById('progressFill').style.width = `${progressPercentage}%`;
+        } else {
+            document.getElementById('roundInfo').textContent = `Round ${this.currentRound}`;
+            document.getElementById('progressFill').style.width = '100%';
+        }
         
         // Create text input for country answer
         const optionsContainer = document.getElementById('optionsContainer');
@@ -171,7 +196,14 @@ class GeographyGame {
     }
 
     handleTextAnswer() {
-        const question = this.todayQuestions[this.currentQuestionIndex];
+        let question;
+        
+        if (this.gameMode === 'daily') {
+            question = this.todayQuestions[this.currentQuestionIndex];
+        } else {
+            question = this.currentQuestion; // Use the stored current question
+        }
+        
         const textInput = document.getElementById('countryInput');
         const submitButton = document.querySelector('.submit-btn');
         const userAnswer = textInput.value.trim().toLowerCase();
@@ -191,7 +223,7 @@ class GeographyGame {
         
         // Check if player hit the trap
         if (userAnswer === question.trapAnswer.toLowerCase()) {
-            this.showAnswerResult(false, "You hit the trap answer! Game over.", question.correctAnswer, question.trapAnswer);
+            this.showAnswerResult(false, "You hit the trap answer! Game over.", question.correctAnswer, question.trapAnswer, question.correctAnswers);
             return;
         }
         
@@ -199,17 +231,16 @@ class GeographyGame {
         if (isCorrectAnswer) {
             this.score++;
             this.streak++;
-            this.showAnswerResult(true, "Correct! Well done!", question.correctAnswer, question.trapAnswer);
+            this.showAnswerResult(true, "Correct! Well done!", question.correctAnswer, question.trapAnswer, question.correctAnswers);
         } else {
             this.streak = 0;
-            this.showAnswerResult(false, "Wrong answer! Game over.", question.correctAnswer, question.trapAnswer);
+            this.showAnswerResult(false, "Wrong answer! Game over.", question.correctAnswer, question.trapAnswer, question.correctAnswers);
         }
         
         this.saveGameState();
     }
     
-    showAnswerResult(isCorrect, message, correctAnswer, trapAnswer) {
-        const question = this.todayQuestions[this.currentQuestionIndex];
+    showAnswerResult(isCorrect, message, correctAnswer, trapAnswer, allCorrectAnswers) {
         const optionsContainer = document.getElementById('optionsContainer');
         optionsContainer.innerHTML = '';
         
@@ -226,7 +257,7 @@ class GeographyGame {
         
         const allCorrectAnswersElement = document.createElement('p');
         allCorrectAnswersElement.className = 'all-correct-answers';
-        allCorrectAnswersElement.innerHTML = `<strong>All Correct Answers:</strong> ${question.correctAnswers.join(', ')}`;
+        allCorrectAnswersElement.innerHTML = `<strong>All Correct Answers:</strong> ${allCorrectAnswers.join(', ')}`;
         
         resultDiv.appendChild(messageElement);
         resultDiv.appendChild(trapAnswerElement);
@@ -239,7 +270,7 @@ class GeographyGame {
                 this.currentQuestionIndex++;
                 this.currentRound++;
                 
-                if (this.currentQuestionIndex >= 5) {
+                if (this.gameMode === 'daily' && this.currentQuestionIndex >= 5) {
                     this.gameOver(true, "Congratulations! You survived all 5 rounds!");
                 } else {
                     this.displayQuestion();
@@ -251,15 +282,32 @@ class GeographyGame {
     }
 
     gameOver(won, message) {
-        if (won && this.streak > this.bestStreak) {
-            this.bestStreak = this.streak;
-            this.saveBestStreak();
+        if (this.gameMode === 'daily') {
+            if (won && this.streak > this.bestStreak) {
+                this.bestStreak = this.streak;
+                this.saveBestStreak();
+            }
+        } else {
+            if (this.score > this.bestUnlimitedScore) {
+                this.bestUnlimitedScore = this.score;
+                this.saveBestUnlimitedScore();
+            }
         }
         
         document.getElementById('resultTitle').textContent = won ? "🎉 Victory!" : "💥 Game Over";
         document.getElementById('resultMessage').textContent = message;
-        document.getElementById('todayScore').textContent = this.score;
-        document.getElementById('bestStreak').textContent = this.bestStreak;
+        
+        if (this.gameMode === 'daily') {
+            document.getElementById('scoreLabel').textContent = "Today's Score";
+            document.getElementById('bestLabel').textContent = "Best Streak";
+            document.getElementById('todayScore').textContent = this.score;
+            document.getElementById('bestStreak').textContent = this.bestStreak;
+        } else {
+            document.getElementById('scoreLabel').textContent = "Final Score";
+            document.getElementById('bestLabel').textContent = "Best Score";
+            document.getElementById('todayScore').textContent = this.score;
+            document.getElementById('bestStreak').textContent = this.bestUnlimitedScore;
+        }
         
         setTimeout(() => {
             this.showResultScreen();
@@ -272,6 +320,8 @@ class GeographyGame {
         this.streak = 0;
         this.currentQuestionIndex = 0;
         this.gameState = 'welcome';
+        this.gameMode = 'daily';
+        this.currentQuestion = null;
         
         this.clearGameState();
         this.showWelcomeScreen();
@@ -283,8 +333,6 @@ class GeographyGame {
         document.getElementById('resultScreen').classList.add('hidden');
     }
 
-
-
     saveGameState() {
         const gameData = {
             currentRound: this.currentRound,
@@ -292,6 +340,7 @@ class GeographyGame {
             streak: this.streak,
             currentQuestionIndex: this.currentQuestionIndex,
             gameState: this.gameState,
+            gameMode: this.gameMode,
             date: new Date().toDateString()
         };
         localStorage.setItem('geographyGameState', JSON.stringify(gameData));
@@ -310,6 +359,7 @@ class GeographyGame {
                 this.streak = gameData.streak;
                 this.currentQuestionIndex = gameData.currentQuestionIndex;
                 this.gameState = gameData.gameState;
+                this.gameMode = gameData.gameMode || 'daily';
                 
                 if (this.gameState === 'playing') {
                     this.showGameScreen();
@@ -332,6 +382,36 @@ class GeographyGame {
     loadBestStreak() {
         const saved = localStorage.getItem('geographyGameBestStreak');
         return saved ? parseInt(saved) : 0;
+    }
+    
+    saveBestUnlimitedScore() {
+        localStorage.setItem('geographyGameBestUnlimitedScore', this.bestUnlimitedScore.toString());
+    }
+    
+    loadBestUnlimitedScore() {
+        const saved = localStorage.getItem('geographyGameBestUnlimitedScore');
+        return saved ? parseInt(saved) : 0;
+    }
+    
+    getRandomQuestion() {
+        const allQuestions = GAME_DATA.questions;
+        const randomIndex = Math.floor(Math.random() * allQuestions.length);
+        const question = allQuestions[randomIndex];
+        
+        // Randomly select a correct answer and a trap answer
+        const correctAnswers = question.correctAnswers;
+        const correctAnswerIndex = Math.floor(Math.random() * correctAnswers.length);
+        const correctAnswer = correctAnswers[correctAnswerIndex];
+        
+        const trapAnswerIndex = Math.floor(Math.random() * correctAnswers.length);
+        const trapAnswer = correctAnswers[trapAnswerIndex];
+        
+        return {
+            question: question.question,
+            correctAnswers: correctAnswers,
+            correctAnswer: correctAnswer,
+            trapAnswer: trapAnswer
+        };
     }
     
     showAutocomplete(input, correctAnswers) {

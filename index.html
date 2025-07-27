@@ -39,7 +39,10 @@
                         <li>New questions every day!</li>
                     </ul>
                 </div>
-                <button class="start-btn" id="startBtn">Start Today's Challenge</button>
+                <div class="game-modes">
+                    <button class="start-btn" id="startBtn">Start Today's Challenge</button>
+                    <button class="unlimited-btn" id="unlimitedBtn">Play Unlimited Mode</button>
+                </div>
             </div>
 
             <div class="game-screen hidden" id="gameScreen">
@@ -51,7 +54,7 @@
                     <div class="options-container" id="optionsContainer"></div>
                 </div>
                 <div class="game-info">
-                    <span class="round-info">Round <span id="currentRound">1</span>/5</span>
+                    <span class="round-info" id="roundInfo">Round <span id="currentRound">1</span>/5</span>
                     <span class="streak-info">Streak: <span id="streakCount">0</span></span>
                 </div>
             </div>
@@ -62,11 +65,11 @@
                     <p id="resultMessage"></p>
                     <div class="stats">
                         <div class="stat">
-                            <span class="stat-label">Today's Score</span>
+                            <span class="stat-label" id="scoreLabel">Today's Score</span>
                             <span class="stat-value" id="todayScore">0</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-label">Best Streak</span>
+                            <span class="stat-label" id="bestLabel">Best Streak</span>
                             <span class="stat-value" id="bestStreak">0</span>
                         </div>
                     </div>

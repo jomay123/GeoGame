@@ -61,6 +61,152 @@ const GAME_DATA = {
         {
             question: "Name a country in the Sahel region",
             correctAnswers: ["Senegal", "Mauritania", "Mali", "Burkina Faso", "Niger", "Chad", "Sudan", "Eritrea"]
+        },
+        {
+            question: "Name a country with green in its flag",
+            correctAnswers: [
+                "Bangladesh", "Belarus", "Benin", "Bolivia", "Brazil", "Bulgaria", "Burkina Faso", "Burundi", "Cameroon",
+                "Central African Republic", "Comoros", "Djibouti", "Dominica", "Equatorial Guinea", "Eritrea", "Ethiopia",
+                "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "India", "Iran", "Ireland", "Italy", "Jamaica", "Jordan",
+                "Kenya", "Kuwait", "Lebanon", "Lesotho", "Libya", "Lithuania", "Madagascar", "Malawi", "Maldives", "Mali",
+                "Mauritania", "Mexico", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Oman", "Pakistan",
+                "Palestine", "Portugal", "Rwanda", "San Marino", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone",
+                "Slovakia", "Somalia", "South Africa", "South Sudan", "Sri Lanka", "Sudan", "Suriname", "Tanzania", "Togo",
+                "Turkmenistan", "Uganda", "United Arab Emirates", "Uzbekistan", "Vanuatu", "Vietnam", "Zambia", "Zimbabwe"
+            ]
+        },
+        {
+            question: "Name a country in Europe that is landlocked",
+            correctAnswers: [
+                "Andorra", "Austria", "Belarus", "Czech Republic", "Hungary", "Kosovo", "Liechtenstein", "Luxembourg",
+                "Macedonia", "Moldova", "San Marino", "Serbia", "Slovakia", "Slovenia", "Switzerland", "Vatican City"
+            ]
+        },
+        {
+            question: "Name a country in Asia that ends in A",
+            correctAnswers: [
+                "Armenia", "China", "Georgia", "India", "Indonesia", "Jordan", "Korea", "Laos", "Malaysia", "Mongolia",
+                "Nepal", "Pakistan", "Philippines", "Russia", "Saudi Arabia", "Sri Lanka", "Syria", "Thailand", "Vietnam"
+            ].filter(country => country.endsWith("a")) // Ensures the ending 'a' condition
+        },
+        {
+            question: "Name a country with stars in its flag",
+            correctAnswers: [
+                "Australia", "Brazil", "Burkina Faso", "Chile", "China", "Cuba", "Dominica", "European Union", "Grenada",
+                "Honduras", "Kosovo", "Malaysia", "Micronesia", "Morocco", "New Zealand", "Panama", "Papua New Guinea",
+                "Samoa", "Solomon Islands", "Somalia", "South Sudan", "Syria", "Turkey", "United States", "Uzbekistan",
+                "Venezuela", "Vietnam"
+            ]
+        },
+        {
+            question: "Name a country that ends in 'stan'",
+            correctAnswers: [
+                "Afghanistan", "Kazakhstan", "Kyrgyzstan", "Pakistan", "Tajikistan", "Turkmenistan", "Uzbekistan"
+            ]
+        },
+        {
+            question: "Name a country in Europe that doesn't use the euro",
+            correctAnswers: [
+                "Albania", "Andorra", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Czech Republic", "Denmark",
+                "Hungary", "Iceland", "Liechtenstein", "Moldova", "Monaco", "North Macedonia", "Norway", "Poland",
+                "Romania", "San Marino", "Serbia", "Sweden", "Switzerland", "United Kingdom", "Vatican City"
+            ]
+        },
+        {
+            question: "Name a European country starting with 'A'",
+            correctAnswers: [
+                "Albania", "Andorra", "Austria", "Armenia", "Azerbaijan"
+            ]
+        },
+        {
+            question: "Name a country bordering Colombia",
+            correctAnswers: [
+                "Brazil", "Ecuador", "Panama", "Peru", "Venezuela"
+            ]
+        },
+        {
+            question: "Name a country with 4 letters",
+            correctAnswers: [
+                "Chad", "Cuba", "Fiji", "Iran", "Iraq", "Laos", "Lima", "Mali", "Oman", "Peru", "Togo"
+            ]
+        },
+        {
+            question: "Name a European country with only red and white in its flag",
+            correctAnswers: [
+                "Austria", "Denmark", "Georgia", "Latvia", "Monaco", "Poland", "Switzerland"
+            ]
+        },
+        {
+            question: "Name a country starting with 'D'",
+            correctAnswers: [
+                "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Democratic Republic of the Congo"
+            ]
+        },
+        {
+            question: "Name a country with yellow on its flag",
+            correctAnswers: [
+                "Australia", "Belgium", "Bolivia", "Brazil", "Brunei", "Cameroon", "Chad", "Colombia", "Democratic Republic of the Congo",
+                "Ecuador", "Germany", "Ghana", "Grenada", "India", "Jamaica", "Kazakhstan", "Kyrgyzstan", "Lithuania", "Malaysia",
+                "Mali", "Mozambique", "North Macedonia", "Peru", "Rwanda", "South Africa", "Spain", "Sri Lanka", "Sweden", "Togo",
+                "Trinidad and Tobago", "Uganda", "Ukraine", "Vatican City", "Venezuela", "Vietnam", "Zimbabwe"
+            ]
+        },
+        {
+            question: "Name a country that borders China",
+            correctAnswers: [
+                "Afghanistan", "Bhutan", "India", "Kazakhstan", "Kyrgyzstan", "Laos", "Mongolia", "Myanmar", "Nepal",
+                "North Korea", "Pakistan", "Russia", "Tajikistan", "Vietnam"
+            ]
+        },
+        {
+            question: "Name a country that starts with 'Tu'",
+            correctAnswers: [
+                "Tunisia", "Turkey", "Turkmenistan", "Tuvalu"
+            ]
+        },
+        {
+            question: "Name a country that starts with 'B'",
+            correctAnswers: [
+                "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
+                "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi"
+            ]
+        },
+        {
+            question: "Name a country that starts with 'Pa'",
+            correctAnswers: [
+                "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru"
+            ]
+        },
+        {
+            question: "Name a landlocked country in Africa",
+            correctAnswers: [
+                "Botswana", "Burkina Faso", "Burundi", "Central African Republic", "Chad", "Ethiopia", "Lesotho",
+                "Malawi", "Mali", "Niger", "Rwanda", "South Sudan", "Swaziland", "Uganda", "Zambia", "Zimbabwe"
+            ]
+        },
+        {
+            question: "Name a country starting with I",
+            correctAnswers: [
+                "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy"
+            ]
+        },
+        {
+            question: "Name a country with 2 words in its name",
+            correctAnswers: [
+                "Bosnia and Herzegovina", "Burkina Faso", "Cape Verde", "Central African Republic", "Costa Rica",
+                "Czech Republic", "Dominican Republic", "El Salvador", "Equatorial Guinea", "Guinea Bissau",
+                "New Zealand", "North Korea", "North Macedonia", "Papua New Guinea", "San Marino", "Saudi Arabia",
+                "Sierra Leone", "Solomon Islands", "South Africa", "South Korea", "South Sudan", "Sri Lanka",
+                "Trinidad and Tobago", "United Arab Emirates", "United Kingdom", "United States", "Vatican City"
+            ]
+        },
+        {
+            question: "Name a country which ends with the letter 'n'",
+            correctAnswers: [
+                "Afghanistan", "Azerbaijan", "Bahrain", "Bangladesh", "Benin", "Bhutan", "Burma (Myanmar)", "Cameroon",
+                "Chad", "Gabon", "Iran", "Iraq", "Japan", "Jordan", "Kazakhstan", "Kyrgyzstan", "Lebanon", "Pakistan",
+                "Palestine", "Spain", "Sudan", "Sweden", "Tajikistan", "Turkmenistan", "Uzbekistan", "Yemen"
+            ].filter(country => country.endsWith("n"))
         }
     ],
 
