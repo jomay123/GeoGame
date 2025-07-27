@@ -405,7 +405,7 @@ class GeographyGame {
         }
         
         const filteredCountries = correctAnswers.filter(country => 
-            country.toLowerCase().includes(input.toLowerCase())
+            country.toLowerCase().startsWith(input.toLowerCase())
         ).slice(0, 8); // Limit to 8 suggestions
         
         if (filteredCountries.length === 0) {
