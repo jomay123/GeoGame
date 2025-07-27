@@ -174,7 +174,8 @@ header h1 {
     gap: 15px;
     max-width: 400px;
     margin: 0 auto;
-    align-items: center;
+    align-items: flex-start;
+    position: relative;
 }
 
 .country-input {
@@ -222,6 +223,46 @@ header h1 {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+}
+
+.autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.autocomplete-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f8f9fa;
+    transition: background-color 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.autocomplete-item:hover {
+    background-color: #f8f9ff;
+}
+
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-item:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.autocomplete-item:last-child {
+    border-radius: 0 0 10px 10px;
 }
 
 .answer-result {

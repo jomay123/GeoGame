@@ -198,6 +198,11 @@ class GeographyGame {
         submitButton.textContent = 'Submit Answer';
         submitButton.addEventListener('click', () => this.handleTextAnswer());
         
+        // Create autocomplete dropdown
+        const dropdown = document.createElement('div');
+        dropdown.className = 'autocomplete-dropdown';
+        dropdown.id = 'autocompleteDropdown';
+        
         // Allow Enter key to submit
         textInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -205,8 +210,21 @@ class GeographyGame {
             }
         });
         
+        // Add input event listener for autocomplete
+        textInput.addEventListener('input', (e) => {
+            this.showAutocomplete(e.target.value, question.correctAnswers);
+        });
+        
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!inputContainer.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+        
         inputContainer.appendChild(textInput);
         inputContainer.appendChild(submitButton);
+        inputContainer.appendChild(dropdown);
         optionsContainer.appendChild(inputContainer);
         
         // Focus on input
@@ -375,6 +393,119 @@ class GeographyGame {
     loadBestStreak() {
         const saved = localStorage.getItem('geographyGameBestStreak');
         return saved ? parseInt(saved) : 0;
+    }
+    
+    showAutocomplete(input, correctAnswers) {
+        const dropdown = document.getElementById('autocompleteDropdown');
+        const textInput = document.getElementById('countryInput');
+        
+        if (!input.trim()) {
+            dropdown.style.display = 'none';
+            return;
+        }
+        
+        const filteredCountries = correctAnswers.filter(country => 
+            country.toLowerCase().includes(input.toLowerCase())
+        ).slice(0, 8); // Limit to 8 suggestions
+        
+        if (filteredCountries.length === 0) {
+            dropdown.style.display = 'none';
+            return;
+        }
+        
+        dropdown.innerHTML = '';
+        dropdown.style.display = 'block';
+        
+        filteredCountries.forEach(country => {
+            const item = document.createElement('div');
+            item.className = 'autocomplete-item';
+            item.innerHTML = `${this.getCountryFlag(country)} ${country}`;
+            
+            item.addEventListener('click', () => {
+                textInput.value = country;
+                dropdown.style.display = 'none';
+                textInput.focus();
+            });
+            
+            dropdown.appendChild(item);
+        });
+    }
+    
+    getCountryFlag(country) {
+        const flagMap = {
+            // Europe
+            'France': '🇫🇷', 'Germany': '🇩🇪', 'Italy': '🇮🇹', 'Spain': '🇪🇸', 'United Kingdom': '🇬🇧',
+            'Netherlands': '🇳🇱', 'Belgium': '🇧🇪', 'Switzerland': '🇨🇭', 'Austria': '🇦🇹', 'Poland': '🇵🇱',
+            'Czech Republic': '🇨🇿', 'Hungary': '🇭🇺', 'Romania': '🇷🇴', 'Bulgaria': '🇧🇬', 'Greece': '🇬🇷',
+            'Portugal': '🇵🇹', 'Ireland': '🇮🇪', 'Denmark': '🇩🇰', 'Sweden': '🇸🇪', 'Norway': '🇳🇴',
+            'Finland': '🇫🇮', 'Iceland': '🇮🇸', 'Croatia': '🇭🇷', 'Slovenia': '🇸🇮', 'Slovakia': '🇸🇰',
+            'Lithuania': '🇱🇹', 'Latvia': '🇱🇻', 'Estonia': '🇪🇪', 'Luxembourg': '🇱🇺', 'Malta': '🇲🇹', 'Cyprus': '🇨🇾',
+            
+            // Asia
+            'China': '🇨🇳', 'Japan': '🇯🇵', 'India': '🇮🇳', 'South Korea': '🇰🇷', 'North Korea': '🇰🇵',
+            'Thailand': '🇹🇭', 'Vietnam': '🇻🇳', 'Malaysia': '🇲🇾', 'Singapore': '🇸🇬', 'Indonesia': '🇮🇩',
+            'Philippines': '🇵🇭', 'Myanmar': '🇲🇲', 'Cambodia': '🇰🇭', 'Laos': '🇱🇦', 'Mongolia': '🇲🇳',
+            'Kazakhstan': '🇰🇿', 'Uzbekistan': '🇺🇿', 'Kyrgyzstan': '🇰🇬', 'Tajikistan': '🇹🇯', 'Turkmenistan': '🇹🇲',
+            'Afghanistan': '🇦🇫', 'Pakistan': '🇵🇰', 'Bangladesh': '🇧🇩', 'Sri Lanka': '🇱🇰', 'Nepal': '🇳🇵',
+            'Bhutan': '🇧🇹', 'Maldives': '🇲🇻', 'Brunei': '🇧🇳', 'East Timor': '🇹🇱', 'Taiwan': '🇹🇼',
+            
+            // Africa
+            'Egypt': '🇪🇬', 'South Africa': '🇿🇦', 'Nigeria': '🇳🇬', 'Kenya': '🇰🇪', 'Ethiopia': '🇪🇹',
+            'Morocco': '🇲🇦', 'Algeria': '🇩🇿', 'Tunisia': '🇹🇳', 'Libya': '🇱🇾', 'Sudan': '🇸🇩',
+            'Chad': '🇹🇩', 'Niger': '🇳🇪', 'Mali': '🇲🇱', 'Burkina Faso': '🇧🇫', 'Senegal': '🇸🇳',
+            'Guinea': '🇬🇳', 'Sierra Leone': '🇸🇱', 'Liberia': '🇱🇷', 'Ivory Coast': '🇨🇮', 'Ghana': '🇬🇭',
+            'Togo': '🇹🇬', 'Benin': '🇧🇯', 'Cameroon': '🇨🇲', 'Central African Republic': '🇨🇫', 'Gabon': '🇬🇦',
+            'Congo': '🇨🇬', 'Democratic Republic of Congo': '🇨🇩', 'Angola': '🇦🇴', 'Zambia': '🇿🇲', 'Zimbabwe': '🇿🇼',
+            'Botswana': '🇧🇼', 'Namibia': '🇳🇦', 'Mozambique': '🇲🇿', 'Madagascar': '🇲🇬', 'Tanzania': '🇹🇿',
+            'Uganda': '🇺🇬', 'Rwanda': '🇷🇼', 'Burundi': '🇧🇮', 'Somalia': '🇸🇴', 'Djibouti': '🇩🇯',
+            'Eritrea': '🇪🇷', 'Comoros': '🇰🇲', 'Seychelles': '🇸🇨', 'Mauritius': '🇲🇺',
+            
+            // South America
+            'Brazil': '🇧🇷', 'Argentina': '🇦🇷', 'Chile': '🇨🇱', 'Peru': '🇵🇪', 'Colombia': '🇨🇴',
+            'Venezuela': '🇻🇪', 'Ecuador': '🇪🇨', 'Bolivia': '🇧🇴', 'Paraguay': '🇵🇾', 'Uruguay': '🇺🇾',
+            'Guyana': '🇬🇾', 'Suriname': '🇸🇷', 'French Guiana': '🇬🇫',
+            
+            // North America
+            'United States': '🇺🇸', 'Canada': '🇨🇦', 'Mexico': '🇲🇽', 'Guatemala': '🇬🇹', 'Belize': '🇧🇿',
+            'Honduras': '🇭🇳', 'El Salvador': '🇸🇻', 'Nicaragua': '🇳🇮', 'Costa Rica': '🇨🇷', 'Panama': '🇵🇦',
+            'Cuba': '🇨🇺', 'Jamaica': '🇯🇲', 'Haiti': '🇭🇹', 'Dominican Republic': '🇩🇴', 'Bahamas': '🇧🇸',
+            'Barbados': '🇧🇧', 'Trinidad and Tobago': '🇹🇹', 'Grenada': '🇬🇩', 'Saint Vincent and the Grenadines': '🇻🇨',
+            'Saint Lucia': '🇱🇨', 'Dominica': '🇩🇲', 'Antigua and Barbuda': '🇦🇬', 'Saint Kitts and Nevis': '🇰🇳',
+            
+            // Oceania
+            'Australia': '🇦🇺', 'New Zealand': '🇳🇿', 'Papua New Guinea': '🇵🇬', 'Fiji': '🇫🇯',
+            'Solomon Islands': '🇸🇧', 'Vanuatu': '🇻🇺', 'New Caledonia': '🇳🇨', 'Samoa': '🇼🇸',
+            'Tonga': '🇹🇴', 'Micronesia': '🇫🇲', 'Palau': '🇵🇼', 'Marshall Islands': '🇲🇭',
+            'Kiribati': '🇰🇮', 'Tuvalu': '🇹🇻', 'Nauru': '🇳🇷',
+            
+            // Middle East
+            'Saudi Arabia': '🇸🇦', 'Iran': '🇮🇷', 'Iraq': '🇮🇶', 'Syria': '🇸🇾', 'Lebanon': '🇱🇧',
+            'Jordan': '🇯🇴', 'Israel': '🇮🇱', 'Palestine': '🇵🇸', 'Yemen': '🇾🇪', 'Oman': '🇴🇲',
+            'United Arab Emirates': '🇦🇪', 'Qatar': '🇶🇦', 'Bahrain': '🇧🇭', 'Kuwait': '🇰🇼', 'Turkey': '🇹🇷',
+            
+            // Caribbean
+            'Puerto Rico': '🇵🇷', 'Guadeloupe': '🇬🇵', 'Martinique': '🇲🇶',
+            
+            // Central Asia
+            'Afghanistan': '🇦🇫',
+            
+            // Balkans
+            'Serbia': '🇷🇸', 'Bosnia and Herzegovina': '🇧🇦', 'Montenegro': '🇲🇪', 'North Macedonia': '🇲🇰', 'Albania': '🇦🇱',
+            
+            // Baltic region
+            'Estonia': '🇪🇪', 'Latvia': '🇱🇻', 'Lithuania': '🇱🇹',
+            
+            // Caucasus
+            'Georgia': '🇬🇪', 'Armenia': '🇦🇲', 'Azerbaijan': '🇦🇿',
+            
+            // Horn of Africa
+            'Somalia': '🇸🇴', 'Ethiopia': '🇪🇹', 'Eritrea': '🇪🇷', 'Djibouti': '🇩🇯',
+            
+            // Sahel region
+            'Mauritania': '🇲🇷'
+        };
+        
+        return flagMap[country] || '🏳️';
     }
 }
 
