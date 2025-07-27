@@ -404,7 +404,10 @@ class GeographyGame {
             return;
         }
         
-        const filteredCountries = correctAnswers.filter(country => 
+        // Get all countries from the comprehensive list
+        const allCountries = this.getAllCountries();
+        
+        const filteredCountries = allCountries.filter(country => 
             country.toLowerCase().startsWith(input.toLowerCase())
         ).slice(0, 8); // Limit to 8 suggestions
         
@@ -429,6 +432,65 @@ class GeographyGame {
             
             dropdown.appendChild(item);
         });
+    }
+    
+    getAllCountries() {
+        return [
+            // Europe
+            'France', 'Germany', 'Italy', 'Spain', 'United Kingdom', 'Netherlands', 'Belgium', 'Switzerland', 'Austria', 'Poland',
+            'Czech Republic', 'Hungary', 'Romania', 'Bulgaria', 'Greece', 'Portugal', 'Ireland', 'Denmark', 'Sweden', 'Norway',
+            'Finland', 'Iceland', 'Croatia', 'Slovenia', 'Slovakia', 'Lithuania', 'Latvia', 'Estonia', 'Luxembourg', 'Malta', 'Cyprus',
+            
+            // Asia
+            'China', 'Japan', 'India', 'South Korea', 'North Korea', 'Thailand', 'Vietnam', 'Malaysia', 'Singapore', 'Indonesia',
+            'Philippines', 'Myanmar', 'Cambodia', 'Laos', 'Mongolia', 'Kazakhstan', 'Uzbekistan', 'Kyrgyzstan', 'Tajikistan', 'Turkmenistan',
+            'Afghanistan', 'Pakistan', 'Bangladesh', 'Sri Lanka', 'Nepal', 'Bhutan', 'Maldives', 'Brunei', 'East Timor', 'Taiwan',
+            
+            // Africa
+            'Egypt', 'South Africa', 'Nigeria', 'Kenya', 'Ethiopia', 'Morocco', 'Algeria', 'Tunisia', 'Libya', 'Sudan',
+            'Chad', 'Niger', 'Mali', 'Burkina Faso', 'Senegal', 'Guinea', 'Sierra Leone', 'Liberia', 'Ivory Coast', 'Ghana',
+            'Togo', 'Benin', 'Cameroon', 'Central African Republic', 'Gabon', 'Congo', 'Democratic Republic of Congo', 'Angola', 'Zambia', 'Zimbabwe',
+            'Botswana', 'Namibia', 'Mozambique', 'Madagascar', 'Tanzania', 'Uganda', 'Rwanda', 'Burundi', 'Somalia', 'Djibouti',
+            'Eritrea', 'Comoros', 'Seychelles', 'Mauritius',
+            
+            // South America
+            'Brazil', 'Argentina', 'Chile', 'Peru', 'Colombia', 'Venezuela', 'Ecuador', 'Bolivia', 'Paraguay', 'Uruguay',
+            'Guyana', 'Suriname', 'French Guiana',
+            
+            // North America
+            'United States', 'Canada', 'Mexico', 'Guatemala', 'Belize', 'Honduras', 'El Salvador', 'Nicaragua', 'Costa Rica', 'Panama',
+            'Cuba', 'Jamaica', 'Haiti', 'Dominican Republic', 'Bahamas', 'Barbados', 'Trinidad and Tobago', 'Grenada', 'Saint Vincent and the Grenadines',
+            'Saint Lucia', 'Dominica', 'Antigua and Barbuda', 'Saint Kitts and Nevis',
+            
+            // Oceania
+            'Australia', 'New Zealand', 'Papua New Guinea', 'Fiji', 'Solomon Islands', 'Vanuatu', 'New Caledonia', 'Samoa',
+            'Tonga', 'Micronesia', 'Palau', 'Marshall Islands', 'Kiribati', 'Tuvalu', 'Nauru',
+            
+            // Middle East
+            'Saudi Arabia', 'Iran', 'Iraq', 'Syria', 'Lebanon', 'Jordan', 'Israel', 'Palestine', 'Yemen', 'Oman',
+            'United Arab Emirates', 'Qatar', 'Bahrain', 'Kuwait', 'Turkey',
+            
+            // Caribbean
+            'Puerto Rico', 'Guadeloupe', 'Martinique',
+            
+            // Central Asia
+            'Afghanistan',
+            
+            // Balkans
+            'Serbia', 'Bosnia and Herzegovina', 'Montenegro', 'North Macedonia', 'Albania',
+            
+            // Baltic region
+            'Estonia', 'Latvia', 'Lithuania',
+            
+            // Caucasus
+            'Georgia', 'Armenia', 'Azerbaijan',
+            
+            // Horn of Africa
+            'Somalia', 'Ethiopia', 'Eritrea', 'Djibouti',
+            
+            // Sahel region
+            'Mauritania'
+        ];
     }
     
     getCountryFlag(country) {
