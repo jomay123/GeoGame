@@ -337,25 +337,7 @@ const GAME_DATA = {
         {
             question: "Name a country that is an enclave",
             correctAnswers: [
-                "San Marino", "Lesotho", "Vatican City"
-            ]
-        },
-        {
-            question: "Name a country in Oceania that is not an island nation",
-            correctAnswers: [
-                "Australia", "Papua New Guinea"
-            ]
-        },
-        {
-            question: "Name a country that has a dragon on its flag",
-            correctAnswers: [
-                "Bhutan", "Wales" // Wales is technically not a country in the UN, but often treated as one contextually
-            ]
-        },
-        {
-            question: "Name a country that has no rivers",
-            correctAnswers: [
-                "Saudi Arabia", "Malta", "Bahrain"
+                "San Marino", "Lesotho", "Vatican City", "Eswatini"
             ]
         },
         {
