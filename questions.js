@@ -181,7 +181,7 @@ const GAME_DATA = {
             question: "Name a landlocked country in Africa",
             correctAnswers: [
                 "Botswana", "Burkina Faso", "Burundi", "Central African Republic", "Chad", "Ethiopia", "Lesotho",
-                "Malawi", "Mali", "Niger", "Rwanda", "South Sudan", "Swaziland", "Uganda", "Zambia", "Zimbabwe"
+                "Malawi", "Mali", "Niger", "Rwanda", "South Sudan", "Eswatini", "Uganda", "Zambia", "Zimbabwe"
             ]
         },
         {
@@ -445,7 +445,7 @@ const GAME_DATA = {
         {
             question: "Name a country that starts with the letter 'S' and is in Africa",
             correctAnswers: [
-                "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Swaziland"
+                "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan"
             ]
         },
         {
@@ -475,7 +475,7 @@ const GAME_DATA = {
         {
             question: "Name a country that is entirely surrounded by another country",
             correctAnswers: [
-                "Lesotho", "San Marino", "Vatican City"
+                "Lesotho", "San Marino", "Vatican City", "Eswatini"
             ]
         },
         {
@@ -488,12 +488,6 @@ const GAME_DATA = {
             question: "Name a country where French is an official language",
             correctAnswers: [
                 "France", "Belgium", "Switzerland", "Canada", "Mali", "Senegal", "Ivory Coast", "Niger", "Chad", "Cameroon"
-            ]
-        },
-        {
-            question: "Name a country that ends with 'landia'",
-            correctAnswers: [
-                "None" // Trick question—intended to be a rare edge case
             ]
         },
         {
@@ -518,12 +512,6 @@ const GAME_DATA = {
             question: "Name a country located on the Equator",
             correctAnswers: [
                 "Brazil", "Colombia", "Ecuador", "Gabon", "Indonesia", "Kenya", "Republic of the Congo", "Uganda", "São Tomé and Príncipe"
-            ]
-        },
-        {
-            question: "Name a country that has a green flag or mostly green",
-            correctAnswers: [
-                "Saudi Arabia", "Pakistan", "Bangladesh", "Libya (former)", "Nigeria"
             ]
         },
         {
@@ -587,12 +575,6 @@ const GAME_DATA = {
             ]
         },
         {
-            question: "Name a country that ends in 'que'",
-            correctAnswers: [
-                "Iraq", "Mozambique"
-            ]
-        },
-        {
             question: "Name a country with a monarchy",
             correctAnswers: [
                 "United Kingdom", "Saudi Arabia", "Sweden", "Thailand", "Norway", "Japan", "Spain", "Jordan", "Netherlands", "Morocco"
@@ -644,7 +626,7 @@ const GAME_DATA = {
         },
         {
             question: "Name a country that uses the US dollar as its official currency",
-            correctAnswers: ["Ecuador", "El Salvador", "Panama", "Zimbabwe"]
+            correctAnswers: ["Ecuador", "El Salvador", "Panama", "Zimbabwe", "United States"]
         },
         {
             question: "Name a country that lies on the Tropic of Capricorn",
@@ -652,7 +634,7 @@ const GAME_DATA = {
         },
         {
             question: "Name a country that begins with 'Ne'",
-            correctAnswers: ["Nepal", "Netherlands", "New Zealand", "Niger"]
+            correctAnswers: ["Nepal", "Netherlands", "New Zealand"]
         },
         {
             question: "Name a country that borders both the Atlantic and Pacific Oceans",
@@ -704,7 +686,7 @@ const GAME_DATA = {
         },
         {
             question: "Name a country whose name is also the name of its capital",
-            correctAnswers: ["Singapore", "Djibouti"]
+            correctAnswers: ["Singapore", "Djibouti, Luxembourg"]
         }
     ],
 
