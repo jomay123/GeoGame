@@ -313,7 +313,7 @@ const GAME_DATA = {
         {
             question: "Name a country that starts and ends with the same letter",
             correctAnswers: [
-                "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria"
+                "Albania", "Algeria", "Andorra", "Argentina", "Armenia", "Australia", "Austria", "Angola", "Saint Vincent and the Grenadines", "Czech Republic", "Saint Kitts and Nevis", "Central African Republic", "Solomon Islands", "Seychelles", "Antigua and Barbuda", 
             ]
         },
         {
