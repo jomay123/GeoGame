@@ -174,7 +174,7 @@ const GAME_DATA = {
         {
             question: "Name a country that starts with 'Pa'",
             correctAnswers: [
-                "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru"
+                "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", 
             ]
         },
         {
@@ -225,7 +225,7 @@ const GAME_DATA = {
             question: "Name a country with 5 letters in its name",
             correctAnswers: [
                 "Chile", "China", "Egypt", "Gabon", "Ghana", "Haiti", "India", "Italy", "Japan", "Kenya", "Libya",
-                "Nepal", "Niger", "Qatar", "Spain", "Sudan", "Syria", "Yemen"
+                "Nepal", "Niger", "Qatar", "Spain", "Sudan", "Syria", "Yemen", "Nauru", "Palau"
             ]
         },
         {
