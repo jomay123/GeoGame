@@ -277,7 +277,7 @@ const GAME_DATA = {
         {
             question: "Name a country that starts with the letter 'P'",
             correctAnswers: [
-                "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal"
+                "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Palestine"
             ]
         },
         {
